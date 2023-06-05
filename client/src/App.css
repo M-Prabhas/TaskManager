@@ -1,0 +1,85 @@
+/* App.css */
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.task-item .task-details {
+  flex-grow: 1;
+}
+
+.task-item .task-details .title {
+  font-weight: bold;
+}
+
+.task-item .task-details .description {
+  color: #555;
+}
+
+.task-item .task-details .due-date {
+  font-size: 14px;
+  color: #777;
+}
+
+.task-item .task-actions {
+  display: flex;
+  align-items: center;
+}
+
+.task-item .task-actions button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.task-item .task-actions button:hover {
+  background-color: #0056b3;
+}
+
+.task-form input,
+.task-form button {
+  margin-top: 10px;
+}
+
+.task-form input[type='text'],
+.task-form input[type='date'] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.task-form button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.task-form button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+}
