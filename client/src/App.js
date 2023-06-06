@@ -14,7 +14,7 @@ function App() {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get('/api/tasks');
+      const response = await axios.get('https://taskmanagement-nsgp.onrender.com/api/tasks',{ withCredentials: true });
       setTasks(response.data);
     } catch (error) {
       console.error('Failed to fetch tasks', error);
@@ -23,7 +23,7 @@ function App() {
 
   const addTask = async () => {
     try {
-      const response = await axios.post('/api/tasks', newTask);
+      const response = await axios.post('https://taskmanagement-nsgp.onrender.com/api/tasks', newTask,{ withCredentials: true });
       setTasks([...tasks, response.data]);
       setNewTask({ title: '', description: '', dueDate: '' });
     } catch (error) {
@@ -37,7 +37,7 @@ function App() {
       setupdate(false);
     }, "1000");
     try {
-      const response = await axios.put(`/api/tasks/${taskId}`, updatedTask);
+      const response = await axios.put(`https://taskmanagement-nsgp.onrender.com/api/tasks/${taskId}`, updatedTask,{ withCredentials: true });
       const updatedTasks = tasks.map(task => {
         if (task._id === taskId) {
           return response.data;
@@ -53,7 +53,7 @@ function App() {
 
   const deleteTask = async (taskId) => {
     try {
-      await axios.delete(`/api/tasks/${taskId}`);
+      await axios.delete(`https://taskmanagement-nsgp.onrender.com/api/tasks/${taskId}`,{ withCredentials: true });
       const updatedTasks = tasks.filter(task => task._id !== taskId);
       setTasks(updatedTasks);
     } catch (error) {

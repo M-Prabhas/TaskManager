@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors');
 const app=express();
 
 mongoose.connect('mongodb+srv://taskmanager:taskmanager@cluster2.jbvgy1a.mongodb.net/TaskDB?retryWrites=true&w=majority',{
@@ -9,6 +10,7 @@ mongoose.connect('mongodb+srv://taskmanager:taskmanager@cluster2.jbvgy1a.mongodb
   console.log("connectionsuccessful")
 }).catch((err)=>console.log(err));
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
