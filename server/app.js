@@ -2,7 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app=express();
 
-mongoose.connect('mongodb://localhost:27017/TaskDB');
+mongoose.connect('mongodb+srv://taskmanager:taskmanager@cluster2.jbvgy1a.mongodb.net/TaskDB?retryWrites=true&w=majority',{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(()=>{
+  console.log("connectionsuccessful")
+}).catch((err)=>console.log(err));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -15,6 +20,16 @@ const TaskSchema = new mongoose.Schema({
   });
   
 const Task = mongoose.model('Task', TaskSchema);
+
+   app.get('/',async (req,res)=>{
+    try {
+       const tasks = await Task.find();
+      res.json(tasks);
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to retrieve tasks' });
+    }
+   })
+
 
   app.get('/api/tasks', async (req, res) => {
     try {
